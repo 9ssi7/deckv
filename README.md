@@ -1,4 +1,4 @@
-# Deckv
+# Deckv - Disposable Email Checker as a Key-Value Store for Golang
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/9ssi7/deckv.svg)](https://pkg.go.dev/github.com/9ssi7/deckv)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
