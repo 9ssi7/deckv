@@ -28,6 +28,17 @@ See the [examples](examples) directory for more detailed usage examples.
 
 ## Quick Start
 
+### Blocklist Configuration File
+
+You can create a blocklist configuration file with the following content:
+
+```
+0-mail.com
+1-mail.com
+```
+
+or real and full domain names, use this file [disposable-email-domains config file](https://github.com/disposable-email-domains/disposable-email-domains/blob/main/disposable_email_blocklist.conf) as a reference.
+
 ### Using In-Memory Storage
 
 Create a `blocklist.conf` file with the following content:
