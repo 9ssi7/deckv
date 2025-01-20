@@ -42,9 +42,9 @@ func (s *Storage) Save(ctx context.Context, data map[string]uint8) error {
 
 // Check verifies if a key exists in the Redis storage.
 func (s *Storage) Check(ctx context.Context, key string) (bool, error) {
-	v, err := s.c.HGet(ctx, "deckv", key).Result()
+	v, err := s.c.HExists(ctx, "deckv", key).Result()
 	if err != nil {
 		return false, err
 	}
-	return v == "1", nil
+	return v, nil
 }
