@@ -73,7 +73,7 @@ Create a `blocklist.conf` file with the following content:
 You can use Redis storage by setting the `WithStorage` option.
 
 ```go
-storage := deckvredis.New(context.Background(), deckvredis.Config{
+storage := deckvredis.New(deckvredis.Config{
     Host:     "localhost",
     Port:     "6379",
     Password: "",
@@ -84,7 +84,7 @@ err := client.Load(context.Background())
 if err != nil {
     panic(err)
 }
-ok, err := client.Check(context.Background(), "0-mail.com")
+ok, err := client.Check(context.Background(), deckv.FromEmail("test@0-mail.com"))
 if err != nil {
     panic(err)
 }

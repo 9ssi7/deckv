@@ -21,7 +21,7 @@ type Storage struct {
 }
 
 // New creates a new Redis storage instance with the provided configuration.
-func New(ctx context.Context, cfg Config) *Storage {
+func New(cfg Config) *Storage {
 	return &Storage{
 		c: redis.NewClient(&redis.Options{
 			Addr:     cfg.Host + ":" + cfg.Port,

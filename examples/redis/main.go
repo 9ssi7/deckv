@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	storage := deckvredis.New(context.Background(), deckvredis.Config{
+	storage := deckvredis.New(deckvredis.Config{
 		Host:     "localhost",
 		Port:     "6379",
 		Password: "",
@@ -20,7 +20,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	ok, err := client.Check(context.Background(), "0-mail.com")
+	ok, err := client.Check(context.Background(), deckv.FromEmail("test@0-mail.com"))
 	if err != nil {
 		panic(err)
 	}

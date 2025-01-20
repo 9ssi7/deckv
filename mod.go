@@ -9,23 +9,32 @@ import (
 )
 
 // Deckv represents the main blocklist client.
-type Deckv struct {
+type Client struct {
 	cfg *Config
 }
 
 // New creates a new Deckv instance with the provided options.
-func New(opts ...Option) *Deckv {
+func New(opts ...Option) *Client {
 	cfg := &Config{}
 	for _, opt := range opts {
 		opt(cfg)
 	}
 	withDefaults(cfg)
-	return &Deckv{cfg: cfg}
+	return &Client{cfg: cfg}
+}
+
+// FromEmail extracts the domain part from an email address.
+func FromEmail(email string) string {
+	parts := strings.Split(email, "@")
+	if len(parts) != 2 {
+		return ""
+	}
+	return parts[1]
 }
 
 // Load reads the blocklist from the configured file and stores it in the configured storage.
 // If no configuration file path or storage is set, this operation is a no-op.
-func (d *Deckv) Load(ctx context.Context) error {
+func (d *Client) Load(ctx context.Context) error {
 	if d.cfg.ConfFilePath == "" {
 		return nil
 	}
@@ -51,7 +60,7 @@ func (d *Deckv) Load(ctx context.Context) error {
 
 // Check verifies if the provided key exists in the blocklist.
 // Returns true if the key is blocked, false otherwise.
-func (d *Deckv) Check(ctx context.Context, key string) (bool, error) {
+func (d *Client) Check(ctx context.Context, key string) (bool, error) {
 	if d.cfg.Storage == nil {
 		return false, nil
 	}
