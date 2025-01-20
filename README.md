@@ -54,11 +54,11 @@ err := client.Load(context.Background())
 if err != nil {
     panic(err)
 }
-ok, err := client.Check(context.Background(), "0-mail.com")
+isBlocked, err := client.Check(context.Background(), "0-mail.com")
 if err != nil {
     panic(err)
 }
-fmt.Println(ok)
+fmt.Println(isBlocked)
 ```
 
 ### Using Redis Storage
@@ -84,11 +84,11 @@ err := client.Load(context.Background())
 if err != nil {
     panic(err)
 }
-ok, err := client.Check(context.Background(), deckv.FromEmail("test@0-mail.com"))
+isBlocked, err := client.Check(context.Background(), deckv.FromEmail("test@0-mail.com"))
 if err != nil {
     panic(err)
 }
-fmt.Println(ok)
+fmt.Println(isBlocked)
 ```
 
 ## Configuration File Format
